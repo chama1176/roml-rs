@@ -84,63 +84,6 @@ impl<T: na::RealField> IK4dTriangle<T> {
 
         self.solve_by_ref_point(vc, &ref_point)
 
-        // let mut ans = [T::zero(), T::zero(), T::zero(), T::zero()];
-        // let c_squared =
-        //     vc.x.clone() * vc.x.clone() + vc.y.clone() * vc.y.clone() + vc.z.clone() * vc.z.clone();
-        // let c = c_squared.sqrt();
-        // // cosine formula
-        // ans[3] = T::pi()
-        //     - ((self.a.clone() * self.a.clone() + self.b.clone() * self.b.clone()
-        //         - c.clone() * c.clone())
-        //         / (T::from_f32(2.0).unwrap() * self.a.clone() * self.b.clone()))
-        //     .acos();
-
-        // // angle between vc and va
-        // let b_theta = ((self.a.clone() * self.a.clone() + c.clone() * c.clone()
-        //     - self.b.clone() * self.b.clone())
-        //     / (T::from_f32(2.0).unwrap() * self.a.clone() * c.clone()))
-        // .acos();
-
-        // // rotation from axis vertial to z axis and vc👺
-        // let rot_cz = na::UnitQuaternion::from_axis_angle(
-        //     &na::Unit::new_normalize(vc.cross(&na::Vector3::z_axis())),
-        //     b_theta.clone(),
-        // );
-        // let va_dot = rot_cz.transform_vector(&vc) * self.a.clone() / c.clone();
-        // let vb_dot = vc.clone() - va_dot.clone();
-
-        // // rotation along with vector c
-        // let rot_ref_theta = na::UnitQuaternion::from_axis_angle(
-        //     &na::Unit::new_normalize(vc.clone()),
-        //     ref_theta.clone(),
-        // );
-        // let va = rot_ref_theta.transform_vector(&va_dot);
-        // let vb = rot_ref_theta.transform_vector(&vb_dot);
-        // ans[0] = va.y.clone().atan2(va.x.clone());
-        // ans[1] = (va.z.clone() / self.a.clone()).acos(); // 精度悪いめ
-
-        // let rot_ans0 = na::UnitQuaternion::from_axis_angle(&na::Vector3::z_axis(), ans[0].clone());
-        // let rot_ans3 = na::UnitQuaternion::from_axis_angle(
-        //     &na::Unit::new_normalize(rot_ans0.transform_vector(&na::Vector3::y_axis())),
-        //     ans[3].clone(),
-        // );
-
-        // let vb_dot_dot = rot_ans3.transform_vector(&va) * self.b.clone() / self.a.clone();
-
-        // // vector a component of vector b
-        // let va_tmp = va.clone() * va.dot(&vb) / self.a.clone() / self.a.clone();
-        // // let va_tmp2 = va.clone() * va.dot(&vb_dot_dot) / self.a.clone() / self.a.clone();
-        // // assert_eq!(va_tmp, va_tmp2);
-
-        // let vb_tmp = vb_dot_dot.clone() - va_tmp.clone();
-        // let vb_tmp2 = vb.clone() - va_tmp.clone();
-
-        // let vb_tmp_cross = vb_tmp.cross(&vb_tmp2);
-        // ans[2] = va.clone().dot(&vb_tmp_cross).signum()
-        //     * vb_tmp_cross.dot(&vb_tmp_cross).sqrt().atan2(vb_tmp.dot(&vb_tmp2));
-
-        // ans
-        // // 👺原点と方向の定義も必要
     }
 }
 
